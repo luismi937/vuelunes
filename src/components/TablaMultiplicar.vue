@@ -4,13 +4,13 @@
 
     <!-- Sección 1: Generar tabla con un botón y método -->
     <section>
-      <h2> Generar tabla con botón y método</h2>
+      <h2>Generar tabla con botón y método</h2>
       <!-- Campo numérico con enlace bidireccional al dato "numero" -->
-      <input 
-        type="number" 
-        v-model.number="numero" 
-        min="1" 
-        placeholder="Introduce un número" 
+      <input
+        type="number"
+        v-model.number="numero"
+        min="1"
+        placeholder="Introduce un número"
       />
       <!-- Botón que ejecuta el método generarTabla -->
       <button @click="generarTabla">Generar Tabla</button>
@@ -23,13 +23,13 @@
 
     <!-- Sección 2: Tabla generada directamente con directivas -->
     <section>
-      <h2> Tabla generada con directivas</h2>
+      <h2>Tabla generada con directivas</h2>
       <!-- Input vinculado al dato "numero2" -->
-      <input 
-        type="number" 
-        v-model.number="numero2" 
-        min="1" 
-        placeholder="Introduce un número" 
+      <input
+        type="number"
+        v-model.number="numero2"
+        min="1"
+        placeholder="Introduce un número"
       />
 
       <!-- Tabla renderizada solo si numero2 es válido -->
@@ -54,12 +54,12 @@
 
     <!-- Sección 3: Tabla para generar valores -->
     <section>
-      <h2> Tabla usando</h2>
-      <input 
-        type="number" 
-        v-model.number="numero3" 
-        min="1" 
-        placeholder="Introduce un número" 
+      <h2>Tabla usando filtros</h2>
+      <input
+        type="number"
+        v-model.number="numero3"
+        min="1"
+        placeholder="Introduce un número"
       />
 
       <table v-if="numero3 > 0">
@@ -83,21 +83,21 @@
 
 <script>
 export default {
-  name: 'TablaMultiplicar',
+  name: "TablaMultiplicar",
 
   data() {
     return {
       // Número introducido por el usuario para la tabla del método
       numero: null,
       // Donde se guarda el HTML generado manualmente
-      tablaHtml: '',
+      tablaHtml: "",
 
       // Número usado para la tabla con directivas
       numero2: null,
 
       // Número usado para la tabla con métodos
-      numero3: null
-    }
+      numero3: null,
+    };
   },
 
   methods: {
@@ -107,8 +107,8 @@ export default {
      */
     generarTabla() {
       if (!this.numero || this.numero < 1) {
-        this.tablaHtml = '<p>Introduce un número válido.</p>'
-        return
+        this.tablaHtml = "<p>Introduce un número válido.</p>";
+        return;
       }
 
       // Construcción dinámica del HTML
@@ -118,36 +118,38 @@ export default {
             <tr><th>Operación</th><th>Resultado</th></tr>
           </thead>
           <tbody>
-      `
+      `;
       for (let i = 1; i <= 10; i++) {
-        html += `<tr><td>${this.numero} x ${i}</td><td>${this.numero * i}</td></tr>`
+        html += `<tr><td>${this.numero} x ${i}</td><td>${
+          this.numero * i
+        }</td></tr>`;
       }
-      html += '</tbody></table>'
+      html += "</tbody></table>";
 
-      this.tablaHtml = html
+      this.tablaHtml = html;
     },
 
     // Devuelve la operación en texto
     getOperacion(a, b) {
-      return `${a} x ${b}`
+      return `${a} x ${b}`;
     },
 
     // Devuelve el resultado de la multiplicación
     getResultado(a, b) {
-      return a * b
-    }
-  }
-}
+      return a * b;
+    },
+  },
+};
 </script>
 
 <style scoped>
 /* Estilo general */
 .contenedor {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg, #fdfbfb, #ebedee);
   padding: 40px 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   color: #333;
 }
 
@@ -164,7 +166,7 @@ section {
   background: #fff;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 }
 
@@ -184,10 +186,11 @@ table {
   width: 80%;
   border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-th, td {
+th,
+td {
   border: 1px solid #e0e0e0;
   padding: 10px;
   text-align: center;
